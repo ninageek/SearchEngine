@@ -7,12 +7,19 @@ import java.util.Scanner;
 
 public class IndexProcessor {
 
+    public Indexer getIndexer() {
+        return indexer;
+    }
+
+    Indexer indexer = new Indexer();
+
 
     public List<String> loadPagesAddresses(String myFile) {
 
         List<String> pageContent = new ArrayList<>();
         ClassLoader classLoader = this.getClass().getClassLoader();
         URL resource = classLoader.getResource(myFile);
+
 
         if (resource != null) {
             File file = new File(resource.getFile());
@@ -27,6 +34,15 @@ public class IndexProcessor {
             }
         }
         return pageContent;
+    }
+
+    public void buildIndex(List<String> pageContent) {
+
+        for (String address : pageContent) {
+            indexer.addPageToIndex(address);
+        }
+
+
     }
 
 

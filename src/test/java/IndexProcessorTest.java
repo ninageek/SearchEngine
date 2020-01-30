@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class IndexProcessorTest {
     IndexProcessor processor = new IndexProcessor();
@@ -11,7 +11,17 @@ public class IndexProcessorTest {
 
     @Test
     public void checkIndexProcessor() {
-        List<String> result = processor.loadPagesAddresses("Pages.txt");
-        assertEquals(result.size(), RES);
+        List<String> pagesAddresses = processor.loadPagesAddresses("Pages.txt");
+        assertEquals(pagesAddresses.size(), RES);
     }
+
+    @Test
+    public void checkBuildIndex() {
+        List<String> pagesAddresses = processor.loadPagesAddresses("Pages.txt");
+        processor.buildIndex(pagesAddresses);
+        String pageText = processor.getIndexer().getPageText(pagesAddresses.get(0));
+        assertFalse(pageText.isEmpty());
+
+    }
+
 }
