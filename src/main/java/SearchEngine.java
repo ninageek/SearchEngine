@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchEngine {
@@ -8,13 +9,22 @@ public class SearchEngine {
         return processor;
     }
 
-    public void updateIndex(String pages){
-        List<String> pageContent = processor.loadPagesAddresses(pages);
-        processor.buildIndex(pageContent);
+    public void updateIndex(String pages) {
+        List<String> pagesAddresses = processor.loadPagesAddresses(pages);
+        processor.buildIndex(pagesAddresses);
     }
 
-    public List<String> search(String term){
-        return null;
+    public List<String> search(String pages, String term) {
+        List<String> ret = new ArrayList<>();
+        List<String> pagesAddresses = processor.loadPagesAddresses(pages);
+        for (String address : pagesAddresses) {
+            String pageText = processor.getIndexer().getPageText(address);
+            if(pageText.contains(term)){
+                ret.add(address);
+            }
+        }
+
+        return ret;
     }
 
 }

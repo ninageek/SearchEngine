@@ -16,7 +16,7 @@ public class IndexProcessor {
 
     public List<String> loadPagesAddresses(String myFile) {
 
-        List<String> pageContent = new ArrayList<>();
+        List<String> pagesAddress = new ArrayList<>();
         ClassLoader classLoader = this.getClass().getClassLoader();
         URL resource = classLoader.getResource(myFile);
 
@@ -26,19 +26,19 @@ public class IndexProcessor {
             try {
                 Scanner pageReader = new Scanner(file);
                 while (pageReader.hasNextLine()) {
-                    pageContent.add(pageReader.nextLine());
+                    pagesAddress.add(pageReader.nextLine());
                 }
                 pageReader.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
-        return pageContent;
+        return pagesAddress;
     }
 
-    public void buildIndex(List<String> pageContent) {
+    public void buildIndex(List<String> pagesAddress) {
 
-        for (String address : pageContent) {
+        for (String address : pagesAddress) {
             indexer.addPageToIndex(address);
         }
 
