@@ -21,6 +21,6 @@ public class SearchEngineTest {
     public void checkSearch(){
         searchEngine.updateIndex(Config.TEST_PAGES);
         List<String> searchResult = searchEngine.search(Config.TEST_PAGES, "war");
-        assertTrue(searchResult.contains("https://en.wikipedia.org/wiki/Scipio_Africanus"));
+        assertTrue(searchResult.contains(Config.SCIPIO));
     }
 }
