@@ -9,7 +9,7 @@ public class SearchEngineTest {
     SearchEngine searchEngine = new SearchEngine();
 
     @Test
-    public void checkUpdateIndex(){
+    public void updateIndexTest(){
         searchEngine.updateIndex(Config.TEST_PAGES);
         IndexProcessor processor = searchEngine.getProcessor();
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
@@ -18,9 +18,14 @@ public class SearchEngineTest {
     }
 
     @Test
-    public void checkSearch(){
+    public void searchFoundTest(){
         searchEngine.updateIndex(Config.TEST_PAGES);
         List<String> searchResult = searchEngine.search(Config.TEST_PAGES, "war");
         assertTrue(searchResult.contains(Config.SCIPIO));
+    }
+
+    @Test
+    public void searchNotFoundTest(){
+
     }
 }

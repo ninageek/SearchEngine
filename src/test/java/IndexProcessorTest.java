@@ -10,13 +10,13 @@ public class IndexProcessorTest {
 
 
     @Test
-    public void checkIndexProcessor() {
+    public void loadPageAddressesTest() {
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
         assertEquals(pagesAddresses.size(), RES);
     }
 
     @Test
-    public void checkBuildIndex() {
+    public void buildIndexTest() {
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
         processor.buildIndex(pagesAddresses);
         String pageText = processor.getIndexer().getPageText(pagesAddresses.get(0));
