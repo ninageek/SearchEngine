@@ -26,6 +26,8 @@ public class SearchEngineTest {
 
     @Test
     public void searchNotFoundTest(){
-
+        searchEngine.updateIndex(Config.TEST_PAGES);
+        List<String> searchResult = searchEngine.search(Config.TEST_PAGES, "knize");
+        assertFalse(searchResult.contains(Config.SCIPIO));
     }
 }
