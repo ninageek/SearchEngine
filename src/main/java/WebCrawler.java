@@ -5,13 +5,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 
 public class WebCrawler {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebCrawler.class);
+
     String getPageText(String pageAddress) {
         StringBuilder result = new StringBuilder();
         try {

@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-
 import static org.junit.Assert.assertEquals;
 
 public class IndexerTest {
@@ -10,7 +9,7 @@ public class IndexerTest {
     @Test
     public void indexerTest() {
         indexer.addPageToIndex(Config.PAGE_ADDRESS);
-        String addPage = indexer.getPageText(Config.PAGE_ADDRESS);
-        assertEquals(Config.TEXT, addPage);
+        String pageText = indexer.getPageText(Config.PAGE_ADDRESS);
+        assertEquals(Config.LOWER_CASE_TEXT, pageText);
     }
 }

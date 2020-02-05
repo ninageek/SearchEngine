@@ -19,7 +19,7 @@ public class SearchEngine {
         List<String> pagesAddresses = processor.loadPagesAddresses(pages);
         for (String address : pagesAddresses) {
             String pageText = processor.getIndexer().getPageText(address);
-            if(pageText.contains(term)){
+            if (pageText.contains(term.toLowerCase())) {
                 ret.add(address);
             }
         }
