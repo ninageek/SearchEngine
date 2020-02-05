@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class IndexProcessor {
 
-    public Indexer getIndexer() {
-        return indexer;
+    public Index getIndex() {
+        return index;
     }
 
-    Indexer indexer = new Indexer();
+    Index index = new Index();
 
 
     public List<String> loadPagesAddresses(String myFile) {
@@ -39,7 +39,7 @@ public class IndexProcessor {
     public void buildIndex(List<String> pagesAddress) {
 
         for (String address : pagesAddress) {
-            indexer.addPageToIndex(address);
+            index.addPageToIndex(address);
         }
 
 

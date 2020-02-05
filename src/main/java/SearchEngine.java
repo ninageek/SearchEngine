@@ -18,7 +18,7 @@ public class SearchEngine {
         List<String> ret = new ArrayList<>();
         List<String> pagesAddresses = processor.loadPagesAddresses(pages);
         for (String address : pagesAddresses) {
-            String pageText = processor.getIndexer().getPageText(address);
+            String pageText = processor.getIndex().getPageText(address);
             if (pageText.contains(term.toLowerCase())) {
                 ret.add(address);
             }

@@ -13,7 +13,7 @@ public class SearchEngineTest {
         searchEngine.updateIndex(Config.TEST_PAGES);
         IndexProcessor processor = searchEngine.getProcessor();
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
-        String pageText = processor.getIndexer().getPageText(pagesAddresses.get(0));
+        String pageText = processor.getIndex().getPageText(pagesAddresses.get(0));
         assertFalse(pageText.isEmpty());
     }
 

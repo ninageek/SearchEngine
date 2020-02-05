@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Indexer {
+public class Index {
     Map<String, String> index = new HashMap<>();
     WebCrawler webCrawler = new WebCrawler();
     HtmlParser htmlParser = new HtmlParser();

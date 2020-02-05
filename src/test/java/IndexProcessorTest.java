@@ -19,7 +19,7 @@ public class IndexProcessorTest {
     public void buildIndexTest() {
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
         processor.buildIndex(pagesAddresses);
-        String pageText = processor.getIndexer().getPageText(pagesAddresses.get(0));
+        String pageText = processor.getIndex().getPageText(pagesAddresses.get(0));
         assertFalse(pageText.isEmpty());
 
     }
