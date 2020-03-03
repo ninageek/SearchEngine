@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SearchEngine {
 
@@ -36,19 +38,30 @@ public class SearchEngine {
     }
 
     public String getContext(String pageText, String term) {
-        String searchTerm = " " + term + " ";
-        int positionOfTerm = pageText.indexOf(searchTerm);
+        int positionOfTerm = -1;
+        String regex = " (" + term + ")[^a-z]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(pageText);
+
+        if (matcher.find()) {
+            positionOfTerm = matcher.start();
+        }
+
+        if (positionOfTerm == -1) {
+            return "";
+        }
+
         int currentBeginIndex = positionOfTerm;
         int currentEndIndex = positionOfTerm;
 
         while (pageText.charAt(currentBeginIndex) != '.') {
-            if(currentBeginIndex >= 1){
+            if (currentBeginIndex >= 1) {
                 currentBeginIndex--;
             }
 
         }
         while (pageText.charAt(currentEndIndex) != '.') {
-            if(currentEndIndex < pageText.length() - 1){
+            if (currentEndIndex < pageText.length() - 1) {
                 currentEndIndex++;
             }
 

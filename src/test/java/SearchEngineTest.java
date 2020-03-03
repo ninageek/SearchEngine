@@ -21,7 +21,6 @@ public class SearchEngineTest {
         searchEngine.updateIndex(Config.TEST_PAGES);
         List<SearchResult> searchResult = searchEngine.search(Config.TEST_PAGES, "code");
         SearchResult searchResultTest = new SearchResult("http://ninageek.com", "i'm learning how to code.");
-
         assertTrue(searchResult.contains(searchResultTest));
     }
 
