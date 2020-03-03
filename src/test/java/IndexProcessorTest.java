@@ -6,13 +6,13 @@ import static org.junit.Assert.*;
 
 public class IndexProcessorTest {
     IndexProcessor processor = new IndexProcessor();
-    final static private int RES = 1;
+    final static private int RES = 2;
 
 
     @Test
     public void loadPageAddressesTest() {
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
-        assertEquals(pagesAddresses.size(), RES);
+        assertEquals(RES, pagesAddresses.size());
     }
 
     @Test

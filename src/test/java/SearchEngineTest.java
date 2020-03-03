@@ -2,14 +2,13 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SearchEngineTest {
     SearchEngine searchEngine = new SearchEngine();
 
     @Test
-    public void updateIndexTest(){
+    public void updateIndexTest() {
         searchEngine.updateIndex(Config.TEST_PAGES);
         IndexProcessor processor = searchEngine.getProcessor();
         List<String> pagesAddresses = processor.loadPagesAddresses(Config.TEST_PAGES);
@@ -18,16 +17,26 @@ public class SearchEngineTest {
     }
 
     @Test
-    public void searchFoundTest(){
+    public void searchFoundTest() {
         searchEngine.updateIndex(Config.TEST_PAGES);
-        List<String> searchResult = searchEngine.search(Config.TEST_PAGES, "war");
-        assertTrue(searchResult.contains(Config.SCIPIO));
+        List<SearchResult> searchResult = searchEngine.search(Config.TEST_PAGES, "code");
+        SearchResult searchResultTest = new SearchResult("http://ninageek.com", "i'm learning how to code.");
+
+        assertTrue(searchResult.contains(searchResultTest));
     }
 
     @Test
-    public void searchNotFoundTest(){
+    public void searchNotFoundTest() {
         searchEngine.updateIndex(Config.TEST_PAGES);
-        List<String> searchResult = searchEngine.search(Config.TEST_PAGES, "knize");
-        assertFalse(searchResult.contains(Config.SCIPIO));
+        List<SearchResult> searchResult = searchEngine.search(Config.TEST_PAGES, "knize");
+        assertTrue(searchResult.isEmpty());
+    }
+
+    @Test
+    public void getContextTest() {
+        String context = searchEngine.getContext(Config.TEST_PAGE_TEXT, "index");
+        assertEquals(Config.TEST_CONTEXT, context);
+
+
     }
 }
