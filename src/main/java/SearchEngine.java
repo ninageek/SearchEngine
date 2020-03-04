@@ -22,9 +22,14 @@ public class SearchEngine {
         List<String> pagesAddresses = processor.loadPagesAddresses(pages);
 
         SearchEngine searchEngine = new SearchEngine();
+        String regex = " (" + term.toLowerCase() + ")[^a-z]";
+        Pattern pattern = Pattern.compile(regex);
+
         for (String address : pagesAddresses) {
             String pageText = processor.getIndex().getPageText(address);
-            if (pageText.contains(term.toLowerCase())) {
+            Matcher matcher = pattern.matcher(pageText);
+
+            if (matcher.find()) {
 
                 String context = searchEngine.getContext(pageText, term);
                 SearchResult searchResult = new SearchResult(address, context);
