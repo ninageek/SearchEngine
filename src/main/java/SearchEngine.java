@@ -39,7 +39,7 @@ public class SearchEngine {
 
     public String getContext(String pageText, String term) {
         int positionOfTerm = -1;
-        String regex = " (" + term + ")[^a-z]";
+        String regex = " (" + term.toLowerCase() + ")[^a-z]";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(pageText);
 
@@ -55,9 +55,12 @@ public class SearchEngine {
         int currentEndIndex = positionOfTerm;
 
         while (pageText.charAt(currentBeginIndex) != '.') {
-            if (currentBeginIndex >= 1) {
-                currentBeginIndex--;
+            if (currentBeginIndex == 0) {
+                break;
             }
+
+            currentBeginIndex--;
+
 
         }
         while (pageText.charAt(currentEndIndex) != '.') {
