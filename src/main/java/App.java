@@ -5,11 +5,11 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         SearchEngine searchEngine = new SearchEngine();
-        searchEngine.updateIndex(Config.TEST_PAGES);
+        searchEngine.updateIndex(Config.PAGES);
         while (true) {
             System.out.println("Enter the search word: ");
             String term = scanner.nextLine();
-            List<SearchResult> ret = searchEngine.search(Config.TEST_PAGES, term);
+            List<SearchResult> ret = searchEngine.search(Config.PAGES, term);
             if (ret != null && !ret.isEmpty()) {
                 for (SearchResult result : ret) {
                     System.out.println(result.getLink());
