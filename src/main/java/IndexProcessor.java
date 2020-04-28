@@ -7,12 +7,16 @@ import java.util.Scanner;
 
 public class IndexProcessor {
 
+    Index index = new Index();
+    ReversedIndex reversedIndex = new ReversedIndex();
+
+    public ReversedIndex getReversedIndex() {
+        return reversedIndex;
+    }
+
     public Index getIndex() {
         return index;
     }
-
-    Index index = new Index();
-
 
     public List<String> loadPagesAddresses(String myFile) {
 
@@ -40,6 +44,7 @@ public class IndexProcessor {
 
         for (String address : pagesAddress) {
             index.addPageToIndex(address);
+            reversedIndex.addPageToIndex(address);
         }
 
 

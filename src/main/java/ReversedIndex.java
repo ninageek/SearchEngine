@@ -5,10 +5,12 @@ public class ReversedIndex {
     WebCrawler webCrawler = new WebCrawler();
     HtmlParser htmlParser = new HtmlParser();
 
+
+
     public String[] getWordsFromPage(String pageAddress) {
         String pageText = webCrawler.getPageText(pageAddress);
         String parsedText = htmlParser.parseHtml(pageText);
-        return parsedText.toLowerCase().split(" ");
+        return parsedText.toLowerCase().replaceAll("[.!?]", " ").split(" ");
     }
 
     public void addPageToIndex(String pageAddress) {

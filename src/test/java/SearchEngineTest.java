@@ -19,7 +19,7 @@ public class SearchEngineTest {
     @Test
     public void searchFoundTest() {
         searchEngine.updateIndex(Config.TEST_PAGES);
-        List<SearchResult> searchResult = searchEngine.search(Config.TEST_PAGES, "code");
+        List<SearchResult> searchResult = searchEngine.search("code");
         SearchResult searchResultTest = new SearchResult("http://ninageek.com", "i'm learning how to code.");
         assertTrue(searchResult.contains(searchResultTest));
     }
@@ -27,7 +27,7 @@ public class SearchEngineTest {
     @Test
     public void searchNotFoundTest() {
         searchEngine.updateIndex(Config.TEST_PAGES);
-        List<SearchResult> searchResult = searchEngine.search(Config.TEST_PAGES, "knize");
+        List<SearchResult> searchResult = searchEngine.search("knize");
         assertTrue(searchResult.isEmpty());
     }
 

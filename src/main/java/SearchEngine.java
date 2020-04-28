@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,9 +19,12 @@ public class SearchEngine {
         processor.buildIndex(pagesAddresses);
     }
 
-    public List<SearchResult> search(String pages, String term) {
+    public List<SearchResult> search(String term) {
         List<SearchResult> ret = new ArrayList<>();
-        List<String> pagesAddresses = processor.loadPagesAddresses(pages);
+        Set<String> pagesAddresses = processor.getReversedIndex().getLinks(term);
+        if(pagesAddresses == null || pagesAddresses.isEmpty()){
+            return ret;
+        }
 
         SearchEngine searchEngine = new SearchEngine();
         String regex = " (" + term.toLowerCase() + ")[^a-z]";

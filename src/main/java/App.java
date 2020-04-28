@@ -9,7 +9,7 @@ public class App {
         while (true) {
             System.out.println("Enter the search word: ");
             String term = scanner.nextLine();
-            List<SearchResult> ret = searchEngine.search(Config.PAGES, term);
+            List<SearchResult> ret = searchEngine.search(term);
             if (ret != null && !ret.isEmpty()) {
                 for (SearchResult result : ret) {
                     System.out.println(result.getLink());
