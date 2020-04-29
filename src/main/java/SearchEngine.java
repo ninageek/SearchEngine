@@ -26,7 +26,7 @@ public class SearchEngine {
         }
 
 
-        String regex = " (" + term.toLowerCase() + ")[^a-z]";
+        String regex = "[^a-z](" + term.toLowerCase() + ")[^a-z]";
         Pattern pattern = Pattern.compile(regex);
 
         for (String address : pagesAddresses) {
