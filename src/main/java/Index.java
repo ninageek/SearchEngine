@@ -9,7 +9,7 @@ public class Index {
     public void addPageToIndex(String pageAddress) {
         String pageText = webCrawler.getPageText(pageAddress);
         String parsedText = htmlParser.parseHtml(pageText);
-        index.put(pageAddress, parsedText.toLowerCase());
+        index.put(pageAddress, parsedText);
     }
 
     public String getPageText(String pageAddress) {

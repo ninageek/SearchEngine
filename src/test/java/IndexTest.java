@@ -10,6 +10,6 @@ public class IndexTest {
     public void indexerTest() {
         index.addPageToIndex(Config.PAGE_ADDRESS);
         String pageText = index.getPageText(Config.PAGE_ADDRESS);
-        assertEquals(Config.LOWER_CASE_TEXT, pageText);
+        assertEquals(Config.TEXT, pageText);
     }
 }

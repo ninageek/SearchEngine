@@ -6,7 +6,6 @@ public class ReversedIndex {
     HtmlParser htmlParser = new HtmlParser();
 
 
-
     public String[] getWordsFromPage(String pageAddress) {
         String pageText = webCrawler.getPageText(pageAddress);
         String parsedText = htmlParser.parseHtml(pageText);
@@ -15,7 +14,8 @@ public class ReversedIndex {
 
     public void addPageToIndex(String pageAddress) {
         String[] words = getWordsFromPage(pageAddress);
-        for (String word : words) {
+        for (String originalWord : words) {
+            String word = originalWord.toLowerCase();
             if (!reversedIndex.containsKey(word)) {
                 reversedIndex.put(word, new HashSet<>());
 

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -21,22 +20,22 @@ public class SearchEngine {
 
     public List<SearchResult> search(String term) {
         List<SearchResult> ret = new ArrayList<>();
-        Set<String> pagesAddresses = processor.getReversedIndex().getLinks(term);
-        if(pagesAddresses == null || pagesAddresses.isEmpty()){
+        Set<String> pagesAddresses = processor.getReversedIndex().getLinks(term.toLowerCase());
+        if (pagesAddresses == null || pagesAddresses.isEmpty()) {
             return ret;
         }
 
-        SearchEngine searchEngine = new SearchEngine();
+
         String regex = " (" + term.toLowerCase() + ")[^a-z]";
         Pattern pattern = Pattern.compile(regex);
 
         for (String address : pagesAddresses) {
             String pageText = processor.getIndex().getPageText(address);
-            Matcher matcher = pattern.matcher(pageText);
+            Matcher matcher = pattern.matcher(pageText.toLowerCase());
 
             if (matcher.find()) {
 
-                String context = searchEngine.getContext(pageText, term);
+                String context = getContext(pageText, term);
                 SearchResult searchResult = new SearchResult(address, context);
                 ret.add(searchResult);
 
@@ -51,7 +50,7 @@ public class SearchEngine {
         int positionOfTerm = -1;
         String regex = " (" + term.toLowerCase() + ")[^a-z]";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(pageText);
+        Matcher matcher = pattern.matcher(pageText.toLowerCase());
 
         if (matcher.find()) {
             positionOfTerm = matcher.start();
