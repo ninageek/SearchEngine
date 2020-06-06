@@ -1,3 +1,7 @@
+package com.ninageek;
+
+import com.ninageek.Config;
+import com.ninageek.ReversedIndex;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

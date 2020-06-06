@@ -1,3 +1,7 @@
+package com.ninageek;
+
+import com.ninageek.Config;
+import com.ninageek.IndexProcessor;
 import org.junit.Test;
 
 import java.util.List;

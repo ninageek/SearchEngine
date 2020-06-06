@@ -1,3 +1,5 @@
+package com.ninageek;
+
 import java.util.*;
 
 public class ReversedIndex {

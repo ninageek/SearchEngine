@@ -1,14 +1,14 @@
-
+package com.ninageek;
 
 public class HtmlParser {
     private static final String BEGIN_SCRIPT = "<script>";
     private static final String END_SCRIPT = "</script>";
 
-    String parseHtml(String html) {
+    public String parseHtml(String html) {
         return removeScript(html).replaceAll("<.*?>", " ").replaceAll(" +", " ").trim();
     }
 
-    String removeScript(String html) {
+    public String removeScript(String html) {
         StringBuilder ret = new StringBuilder();
         boolean writeFlag = true;
         for (int i = 0; i < html.length(); i++) {

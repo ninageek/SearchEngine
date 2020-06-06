@@ -1,3 +1,5 @@
+package com.ninageek;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +13,7 @@ import java.net.URL;
 public class WebCrawler {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebCrawler.class);
 
-    String getPageText(String pageAddress) {
+    public String getPageText(String pageAddress) {
         StringBuilder result = new StringBuilder();
         try {
             URL url = new URL(pageAddress);

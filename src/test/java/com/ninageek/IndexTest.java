@@ -1,3 +1,7 @@
+package com.ninageek;
+
+import com.ninageek.Config;
+import com.ninageek.Index;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

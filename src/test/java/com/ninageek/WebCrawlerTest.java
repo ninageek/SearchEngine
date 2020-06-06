@@ -1,3 +1,6 @@
+package com.ninageek;
+
+import com.ninageek.WebCrawler;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,6 +17,7 @@ public class WebCrawlerTest {
         String text = upToYou.getPageText("http://ninageek.com");
         assertTrue(text.startsWith(PAGE_START));
     }
+
     @Test
     public void getPageTextTestNoProtocol(){
       String text = upToYou.getPageText("ninageek.com");
