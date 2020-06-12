@@ -1,8 +1,6 @@
 package com.ninageek;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,23 +19,15 @@ public class IndexProcessor {
     }
 
     public List<String> loadPagesAddresses(String myFile) {
-
         List<String> pagesAddress = new ArrayList<>();
-        ClassLoader classLoader = this.getClass().getClassLoader();
-        URL resource = classLoader.getResource(myFile);
-
-
-        if (resource != null) {
-            File file = new File(resource.getFile());
-            try {
-                Scanner pageReader = new Scanner(file);
-                while (pageReader.hasNextLine()) {
-                    pagesAddress.add(pageReader.nextLine());
-                }
-                pageReader.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream stream = classLoader.getResourceAsStream(myFile);
+        if (stream != null) {
+            Scanner pageReader = new Scanner(stream);
+            while (pageReader.hasNextLine()) {
+                pagesAddress.add(pageReader.nextLine());
             }
+            pageReader.close();
         }
         return pagesAddress;
     }
