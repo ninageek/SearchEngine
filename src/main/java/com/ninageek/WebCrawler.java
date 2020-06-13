@@ -1,5 +1,8 @@
 package com.ninageek;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +11,7 @@ import java.net.URL;
 
 
 public class WebCrawler {
-    //private static final Logger LOGGER = LoggerFactory.getLogger(WebCrawler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebCrawler.class);
 
     public String getPageText(String pageAddress) {
         StringBuilder result = new StringBuilder();
@@ -24,7 +27,7 @@ public class WebCrawler {
             rd.close();
 
         } catch (IOException e) {
-           // LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage());
 
         }
         return result.toString();
