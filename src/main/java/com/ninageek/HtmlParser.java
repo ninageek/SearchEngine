@@ -26,12 +26,7 @@ public class HtmlParser {
             }
         }
 
-//        CharacterIterator it = new StringCharacterIterator(html);
-//        while (it.current() != CharacterIterator.DONE){
-//            if(it.current() == '<'){
-//                it.current()
-//            }
-//        }
+
         return ret.toString();
     }
 

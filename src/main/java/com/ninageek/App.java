@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    @SuppressWarnings({"java:S106", "InfiniteLoopStatement"})
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         SearchEngine searchEngine = new SearchEngine();

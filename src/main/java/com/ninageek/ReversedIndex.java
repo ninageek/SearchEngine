@@ -1,9 +1,12 @@
 package com.ninageek;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class ReversedIndex {
-    Map<String, Set<String>> reversedIndex = new HashMap<>();
+    Map<String, Set<String>> reversedIndexMap = new HashMap<>();
     WebCrawler webCrawler = new WebCrawler();
     HtmlParser htmlParser = new HtmlParser();
 
@@ -18,15 +21,15 @@ public class ReversedIndex {
         String[] words = getWordsFromPage(pageAddress);
         for (String originalWord : words) {
             String word = originalWord.toLowerCase();
-            if (!reversedIndex.containsKey(word)) {
-                reversedIndex.put(word, new HashSet<>());
+            if (!reversedIndexMap.containsKey(word)) {
+                reversedIndexMap.put(word, new HashSet<>());
 
             }
-            reversedIndex.get(word).add(pageAddress);
+            reversedIndexMap.get(word).add(pageAddress);
         }
     }
 
     public Set<String> getLinks(String word) {
-        return reversedIndex.get(word);
+        return reversedIndexMap.get(word);
     }
 }

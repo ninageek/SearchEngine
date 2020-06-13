@@ -4,18 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Index {
-    Map<String, String> index = new HashMap<>();
+    Map<String, String> indexMap = new HashMap<>();
     WebCrawler webCrawler = new WebCrawler();
     HtmlParser htmlParser = new HtmlParser();
 
     public void addPageToIndex(String pageAddress) {
         String pageText = webCrawler.getPageText(pageAddress);
         String parsedText = htmlParser.parseHtml(pageText);
-        index.put(pageAddress, parsedText);
+        indexMap.put(pageAddress, parsedText);
     }
 
     public String getPageText(String pageAddress) {
-        return index.get(pageAddress);
+        return indexMap.get(pageAddress);
     }
 
 }
